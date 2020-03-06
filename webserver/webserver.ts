@@ -1,26 +1,30 @@
 import express, {Express} from 'express'
 import bodyparse from 'body-parser'
 import IController from './icontroller';
+import {Server} from "http";
 
 export default class WebServer{
-    private _server: Express;
+    private _app: Express;
+    private _server: Server | undefined;
 
     get express(): Express{
-        return this._server;
+        return this._app;
     }
 
-    constructor(){
-        this._server = express();
+    constructor(private _port:number){
+        this._app = express();
 
-        this._server.use(bodyparse.json());
-        this._server.use(bodyparse.urlencoded({extended:true}));
+        this._app.use(bodyparse.json());
+        this._app.use(bodyparse.urlencoded({extended:true}));
     }
 
     public addController(controller:IController):void{
-        this._server.use(`/${controller.name}`, controller.router);
+        this._app.use(`/${controller.name}`, controller.router);
     }
 
     public start():void{
-        //
+        this._server = this._app.listen(this._port, () =>{
+            console.log(`Server is listening on ${this._port}`);
+        });
     }
 }
