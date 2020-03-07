@@ -16,6 +16,14 @@ export default class WebServer{
 
         this._app.use(bodyparse.json());
         this._app.use(bodyparse.urlencoded({extended:true}));
+
+        this._app.use((req, res, next) => {
+            res.setHeader("Access-Control-Allow-Origin", "*");
+            res.setHeader("Access-Control-Allow-Credentials", "true");
+            res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+            res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Origin,Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,Authorization");
+            next();
+        });
     }
 
     public addController(controller:IController):void{
@@ -24,7 +32,7 @@ export default class WebServer{
 
     public start():void{
         this._server = this._app.listen(this._port, () =>{
-            console.log(`Server is listening on ${this._port}`);
+            console.log(`Server is listening on ${this._port} with CORS`);
         });
     }
 }

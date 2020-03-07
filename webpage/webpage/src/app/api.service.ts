@@ -10,7 +10,7 @@ export class ApiService {
     }
 
     anotherFunc(): string {
-        return 'OK1';
+        return 'OK2';
     }
 
     get() {
