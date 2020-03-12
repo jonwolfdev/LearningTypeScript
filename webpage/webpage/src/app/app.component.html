@@ -1,10 +1,21 @@
-<form>
-  <div class="form-group">
-    <button type="button" class="btn btn-primary" (click)='showComponent()'>Show</button>
-  </div>
-</form>
-<br/>
-<app-childcomponent *ngIf='showOrNot'></app-childcomponent>
 
+<div class="container">
+  
+  <div class="row">
+    <div class="col-md-12 order-md-1 py-3">
+      <form>
+        <div class="form-group">
+          <button type="button" class="btn btn-primary" (click)='showComponent()'>
+            {{!showOrNot ? 'Show':'Hide'}}
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-12 order-md-1 py-3">
+      <a [routerLink]="['/page1']">Page 1</a> | <a [routerLink]="['/page2']">Page 2</a>
+    </div>
+  </div>
+</div>
+<app-childcomponent *ngIf='showOrNot'></app-childcomponent>
 
 <router-outlet></router-outlet>

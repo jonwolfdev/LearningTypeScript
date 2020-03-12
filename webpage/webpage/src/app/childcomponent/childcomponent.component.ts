@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from '../api.service';
+import { Subscription } from 'rxjs';
+import { Imymodel } from '../imymodel';
 
 @Component({
   selector: 'app-childcomponent',
@@ -8,19 +10,32 @@ import { ApiService } from '../api.service';
   providers: [ApiService]
 })
 export class ChildcomponentComponent implements OnInit, OnDestroy {
-  ngOnDestroy(): void {
-    console.log('Destroyed');
-  }
+
+  sub: Subscription;
+  public model: Imymodel;
 
   constructor(private serv: ApiService) { }
 
+  ngOnDestroy(): void {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+    console.log('Destroyed');
+  }
+
   ngOnInit(): void {
+    //
+    this.model = {
+      name: '',
+      num: 0
+    };
   }
 
   showResponse(): void {
-    console.log(this.serv.anotherFunc());
-    this.serv.get().subscribe((data: any) => {
+    this.sub = this.serv.get().subscribe((data: any) => {
       console.log(data);
+    }, (error: any) => {
+      console.log(error);
     });
   }
 }
