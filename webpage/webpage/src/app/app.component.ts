@@ -1,4 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
+import { IPersonObject } from './iperson-object';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +10,17 @@ export class AppComponent {
 
   title = 'webpage';
   showOrNot: boolean = true;
+  myobj: IPersonObject;
 
   constructor() {
-
+    this.myobj = {name: 'My name is Name' };
   }
 
-  showComponent(){
+  showComponent() {
     this.showOrNot = !this.showOrNot;
   }
 
+  onNotify(msg: string): void {
+    console.log('App component was notified: ' + msg);
+  }
 }

@@ -15,7 +15,14 @@
       <a [routerLink]="['/page1']">Page 1</a> | <a [routerLink]="['/page2']">Page 2</a>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h6>My object person: </h6>
+      <pre>{{myobj | json}}</pre>
+    </div>
+  </div>
 </div>
-<app-childcomponent *ngIf='showOrNot'></app-childcomponent>
+
+<app-childcomponent *ngIf='showOrNot' [myinputObj]='myobj' (notify)='onNotify($event)'></app-childcomponent>
 
 <router-outlet></router-outlet>

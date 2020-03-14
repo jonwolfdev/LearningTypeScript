@@ -1,5 +1,27 @@
   
   <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h5>@input/@output</h5>
+        <button class="btn btn-primary btn-lg btn-block" type="button" (click)='changeObjectPerson()'>
+          Change myinputObj person
+        </button>
+      </div>
+      
+      
+      <div class="col-md-12">
+        <h6 style="display: block;">My object person (childcomponent): </h6>
+        <pre>{{myinputObj | json}}</pre>
+      </div>
+      <div class="col-md-12">
+        <h6 style="display: block;">My object person (childcomponent-from service): </h6>
+        <pre>{{myOtherPreson | json}}</pre>
+      </div>
+      <div class="col-md-12">
+        <h6 style="display: block;">My object person (childcomponent-from async service): </h6>
+        <pre>{{myOtherPresonFromAsync | json}}</pre>
+      </div>
+    </div>
     <div class="py-5 text-center">
       <h2>API Form</h2>
       <p class="lead">This makes a call to a nodejs server hosting a web API</p>
@@ -7,7 +29,7 @@
   
     <div class="row">
       <div class="col-md-12 order-md-1">
-        <h4 class="mb-3">Get /</h4>
+        <h4 class="mb-3">Get / (server has to be started)</h4>
         <form>
           
           <hr class="mb-4">
@@ -18,6 +40,7 @@
   
     <div class="row">
       <div class="col-md-12">
+        <hr class="mb-4">
         <h4 class="mb-3">Model binding</h4>
         <form>
           <div class="row">
