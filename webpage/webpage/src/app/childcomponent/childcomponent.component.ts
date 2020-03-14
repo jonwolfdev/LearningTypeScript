@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { Imymodel } from '../imymodel';
 import { EventEmitter } from '@angular/core';
 import { IPersonObject } from '../iperson-object';
+import { MyLogger } from '../my-logger';
 
 @Component({
   selector: 'app-childcomponent',
@@ -60,6 +61,7 @@ export class ChildcomponentComponent implements OnInit, OnDestroy {
     });
   }
 
+  @MyLogger('Hello! ngOnInit')
   changeObjectPerson(): void {
     if (this.myinputObj) {
       this.myinputObj.name = 'This was changed';
