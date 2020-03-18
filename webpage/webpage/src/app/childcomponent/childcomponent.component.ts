@@ -5,6 +5,7 @@ import { Imymodel } from '../imymodel';
 import { EventEmitter } from '@angular/core';
 import { IPersonObject } from '../iperson-object';
 import { MyLogger } from '../my-logger';
+import { PartialProperties } from '../partial-properties';
 
 @Component({
   selector: 'app-childcomponent',
@@ -23,6 +24,8 @@ export class ChildcomponentComponent implements OnInit, OnDestroy {
   @Input() myinputObj: IPersonObject;
   @Output() notify: EventEmitter<string> = new EventEmitter<string>();
 
+  list: IPersonObject[] = [];
+
   constructor(private serv: ApiService) { }
 
   ngOnDestroy(): void {
@@ -31,10 +34,12 @@ export class ChildcomponentComponent implements OnInit, OnDestroy {
     }
     console.log('Destroyed');
     this.myOtherPreson = {
-      name: '_unset_'
+      name: '_unset_',
+      type: 'person'
     };
     this.myOtherPresonFromAsync = {
-      name: '_unset2_'
+      name: '_unset2_',
+      type: 'person'
     };
   }
 
@@ -42,7 +47,8 @@ export class ChildcomponentComponent implements OnInit, OnDestroy {
     //
     this.model = {
       name: '',
-      num: 0
+      num: 0,
+      type: 'model'
     };
 
     this.serv.getValues().subscribe((data: IPersonObject[]) => {
@@ -51,6 +57,20 @@ export class ChildcomponentComponent implements OnInit, OnDestroy {
       }
     });
     this.myOtherPresonFromAsync = await this.serv.getValuesAsync();
+
+    console.log(new PartialProperties().setProperties(this.myOtherPreson, {name: 'New name!@!'}));
+    console.log(new PartialProperties().toString());
+    new PartialProperties().hitTest(['string one', 12.34, {name: 'asd', num: 12, type: 'model'}, 'on']);
+
+    setTimeout(() => {
+      this.serv.getValues().subscribe((data: IPersonObject[]) => {
+        this.list = data;
+      });
+    }, 1000);
+
+    setTimeout(() => {
+      this.list.push({name: 'From code a new one!', type: 'person'});
+    }, 2500);
   }
 
   showResponse(): void {

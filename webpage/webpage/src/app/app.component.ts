@@ -13,7 +13,7 @@ export class AppComponent {
   myobj: IPersonObject;
 
   constructor() {
-    this.myobj = {name: 'My name is Name' };
+    this.myobj = {name: 'My name is Name', type: 'person' };
   }
 
   showComponent() {

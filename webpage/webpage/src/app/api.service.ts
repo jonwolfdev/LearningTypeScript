@@ -21,14 +21,15 @@ export class ApiService {
 
     getValues(): Observable<IPersonObject[]> {
         const obj: IPersonObject = {
-            name: 'My name is what-from service'
+            name: 'My name is what-from service',
+            type: 'person'
         };
         return of([
-            {name: 'What-from service'}, obj
+            {name: 'What-from service', type: 'person'}, obj
         ]);
     }
 
     async getValuesAsync(): Promise<IPersonObject> {
-        return Promise.resolve({name: 'haha-promise from service'});
+        return Promise.resolve({name: 'haha-promise from service', type: 'person'});
     }
 }
