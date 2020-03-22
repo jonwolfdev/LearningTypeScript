@@ -22,7 +22,7 @@ import { SubInnerComponent } from '../sub-inner/sub-inner.component';
     RouterModule.forChild(
       [{
         path: 'mymod', component: InnerComponentComponent,
-        children: [{path: 'second', component: SubInnerComponent}]
+        children: [{path: 'second/:id', component: SubInnerComponent}]
       }]
     )
   ],
