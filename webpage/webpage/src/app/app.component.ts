@@ -8,19 +8,4 @@ import { IPersonObject } from './iperson-object';
 })
 export class AppComponent {
 
-  title = 'webpage';
-  showOrNot: boolean = true;
-  myobj: IPersonObject;
-
-  constructor() {
-    this.myobj = {name: 'My name is Name', type: 'person' };
-  }
-
-  showComponent() {
-    this.showOrNot = !this.showOrNot;
-  }
-
-  onNotify(msg: string): void {
-    console.log('App component was notified: ' + msg);
-  }
 }

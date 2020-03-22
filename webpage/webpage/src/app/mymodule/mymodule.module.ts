@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { InnerComponentComponent } from '../inner-component/inner-component.component';
 import { SubInnerComponent } from '../sub-inner/sub-inner.component';
+import { MyCanActivateGuardGuard } from '../my-can-activate-guard.guard';
 
 
 
@@ -22,7 +23,7 @@ import { SubInnerComponent } from '../sub-inner/sub-inner.component';
     RouterModule.forChild(
       [{
         path: 'mymod', component: InnerComponentComponent,
-        children: [{path: 'second/:id', component: SubInnerComponent}]
+        children: [{path: 'second/:id', component: SubInnerComponent, canActivate: [MyCanActivateGuardGuard]}]
       }]
     )
   ],
