@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.900.7",
-    "@angular/cli": "^9.0.7",
+    "@angular/cli": "^9.1.7",
     "@angular/compiler-cli": "^9.0.7",
     "@angular/language-service": "^9.0.7",
     "@types/jasmine": "^3.5.9",
@@ -44,7 +44,7 @@
     "karma-jasmine-html-reporter": "^1.4.2",
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
-    "tslint": "~5.18.0",
-    "typescript": "~3.7.5"
+    "tslint": "^5.18.0",
+    "typescript": "^3.7.5"
   }
 }

@@ -23,7 +23,7 @@ var WebServer = /** @class */ (function () {
         get: function () {
             return this._app;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     WebServer.prototype.addController = function (controller) {

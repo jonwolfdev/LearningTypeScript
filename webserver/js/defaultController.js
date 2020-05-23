@@ -15,7 +15,7 @@ var DefaultController = /** @class */ (function () {
         get: function () {
             return "app";
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     return DefaultController;
