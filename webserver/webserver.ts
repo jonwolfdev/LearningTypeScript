@@ -35,4 +35,8 @@ export default class WebServer{
             console.log(`Server is listening on ${this._port} with CORS`);
         });
     }
+    public stop(): void {
+        console.log('Server is stopping...');
+        this._server?.close();
+    }
 }
